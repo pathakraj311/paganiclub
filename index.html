@@ -333,7 +333,98 @@ footer{
   font-weight:bold;
   margin-bottom:10px;
 }
+/* PROFILE PAGE */
 
+.profile-page{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:3000;
+  background:#07080d;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.profile-card{
+  position:relative;
+  width:100%;
+  max-width:500px;
+  background:#11141b;
+  border:1px solid rgba(213,166,60,.4);
+  border-radius:24px;
+  padding:40px 30px;
+  text-align:center;
+}
+
+.profile-close{
+  position:absolute;
+  top:12px;
+  right:18px;
+  background:none;
+  border:none;
+  color:#aaa;
+  font-size:30px;
+  cursor:pointer;
+}
+
+.profile-avatar{
+  width:90px;
+  height:90px;
+  margin:0 auto 20px;
+  border-radius:50%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  background:#d5a63c;
+  color:#080808;
+  font-size:35px;
+  font-weight:bold;
+}
+
+.profile-title{
+  font-size:24px;
+  font-weight:bold;
+  letter-spacing:4px;
+}
+
+.profile-line{
+  width:60px;
+  height:2px;
+  background:#d5a63c;
+  margin:18px auto 30px;
+}
+
+.profile-info{
+  text-align:left;
+  background:#080a0f;
+  border-radius:12px;
+  padding:16px;
+  margin-bottom:12px;
+}
+
+.profile-info small{
+  color:#737b89;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.profile-info h2{
+  margin-top:7px;
+  font-size:18px;
+}
+
+.profile-info p{
+  margin-top:7px;
+  color:#ddd;
+  word-break:break-word;
+}
+
+.profile-status{
+  color:#66e59a;
+  font-size:13px;
+  margin:22px 0;
+}
 
 @media(max-width:800px){
   nav{
@@ -1156,6 +1247,42 @@ window.onclick = function(event){
 
 function showProfile(){
 
+  const userPromise =
+    supabaseClient.auth.getUser();
+
+  userPromise.then(function(result){
+
+    const currentUser = result.data.user;
+
+    if(!currentUser){
+
+      alert("Please login first.");
+      return;
+
+    }
+
+    const name =
+      currentUser.user_metadata?.full_name ||
+      "P A G A N i Player";
+
+    const email =
+      currentUser.email || "";
+
+    document.getElementById("profileName").innerText = name;
+    document.getElementById("profileEmail").innerText = email;
+
+    document.getElementById("profilePage").style.display = "flex";
+
+  });
+
+}
+
+function closeProfile(){
+
+  document.getElementById("profilePage").style.display = "none";
+
+}
+
   const user =
     supabaseClient.auth.getUser();
 
@@ -1188,6 +1315,45 @@ function showProfile(){
 
 
 </script>
+<!-- PROFILE PAGE -->
 
+<div id="profilePage" class="profile-page">
+
+  <div class="profile-card">
+
+    <button class="profile-close" onclick="closeProfile()">×</button>
+
+    <div class="profile-avatar">
+      P
+    </div>
+
+    <div class="profile-title">
+      P A G A N i PROFILE
+    </div>
+
+    <div class="profile-line"></div>
+
+    <div class="profile-info">
+      <small>PLAYER NAME</small>
+      <h2 id="profileName">P A G A N i Player</h2>
+    </div>
+
+    <div class="profile-info">
+      <small>EMAIL</small>
+      <p id="profileEmail"></p>
+    </div>
+
+    <div class="profile-status">
+      ● ACCOUNT ACTIVE
+    </div>
+
+    <button class="btn primary" onclick="closeProfile()">
+      BACK TO P A G A N i
+    </button>
+
+  </div>
+
+</div>
+  
 </body>
 </html>
