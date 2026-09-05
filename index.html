@@ -1339,7 +1339,31 @@ const supabaseClient =
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
   );
+  
+async function gateLogin(){
 
+  const email = document.getElementById("gateEmail").value.trim();
+  const password = document.getElementById("gatePassword").value;
+  const message = document.getElementById("gateMessage");
+
+  if(!email || !password){
+    message.innerText = "Enter email and password.";
+    return;
+  }
+
+  message.innerText = "Logging in...";
+
+  const { data, error } =
+    await supabaseClient.auth.signInWithPassword({email,password});
+
+  if(error){
+    message.innerText = error.message;
+    return;
+  }
+
+  document.getElementById("loginGate").style.display = "none";
+  updateAccount(data.user);
+}
 
 /* =========================
    LOGIN / SIGNUP
@@ -1499,7 +1523,10 @@ async function logoutUser(){
 
     return;
   }
-
+document.getElementById("loginGate").style.display = "flex";
+document.getElementById("gateEmail").value = "";
+document.getElementById("gatePassword").value = "";
+document.getElementById("gateMessage").innerText = "";
   message.innerText =
     "Logged out successfully.";
 
@@ -1538,7 +1565,10 @@ async function checkSession(){
 
   if(data.session){
 
-    updateAccount(data.session.user);
+    document.getElementById("loginGate").style.display = "none";
+    }else{
+  document.getElementById("loginGate").style.display = "flex";
+  }
 
   }
 
