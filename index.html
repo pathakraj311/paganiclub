@@ -183,65 +183,98 @@ nav a:hover{color:#d5a63c}
   transform:translateY(-2px);
 }
 
-.hero-content{max-width:850px}
+.hero-content{
+  position:relative;
+  z-index:2;
+  max-width:900px;
+}
 
 .badge{
   display:inline-block;
-  padding:8px 15px;
-  border:1px solid rgba(213,166,60,.5);
+  padding:10px 20px;
+  border:1px solid rgba(213,166,60,.6);
   border-radius:30px;
-  color:#d5a63c;
+  color:#f0c65d;
+  background:rgba(213,166,60,.06);
   font-size:12px;
-  letter-spacing:3px;
-  margin-bottom:25px;
+  font-weight:800;
+  letter-spacing:4px;
+  margin-bottom:28px;
+  box-shadow:0 0 25px rgba(213,166,60,.08);
 }
 
 .hero h1{
-  font-size:clamp(48px,10vw,100px);
-  letter-spacing:12px;
-  margin-bottom:15px;
+  font-size:clamp(55px,12vw,125px);
+  font-weight:900;
+  letter-spacing:14px;
+  line-height:.9;
+  margin-bottom:25px;
+  text-shadow:
+    0 8px 40px rgba(0,0,0,.8),
+    0 0 35px rgba(213,166,60,.08);
 }
 
-.hero h1 span{color:#d5a63c}
+.hero h1 span{
+  color:#d5a63c;
+  text-shadow:
+    0 0 20px rgba(213,166,60,.35),
+    0 0 50px rgba(213,166,60,.12);
+}
 
 .hero p{
-  color:#aeb4c0;
-  max-width:650px;
-  margin:0 auto 35px;
-  line-height:1.7;
+  color:#b8bec9;
+  max-width:680px;
+  margin:0 auto 38px;
+  line-height:1.8;
   font-size:16px;
 }
 
 .buttons{
   display:flex;
   justify-content:center;
-  gap:14px;
+  gap:16px;
   flex-wrap:wrap;
 }
 
 .btn{
   border:none;
-  padding:14px 25px;
+  padding:16px 30px;
   border-radius:8px;
-  font-weight:bold;
+  font-weight:800;
   cursor:pointer;
   text-decoration:none;
   display:inline-block;
+  letter-spacing:.6px;
+  transition:.3s ease;
 }
 
 .primary{
-  background:#d5a63c;
+  background:linear-gradient(135deg,#f0c65d,#d5a63c);
   color:#080808;
+  box-shadow:
+    0 10px 30px rgba(213,166,60,.2);
 }
 
-.primary:hover{background:#f0c65d}
+.primary:hover{
+  transform:translateY(-3px);
+  box-shadow:
+    0 15px 40px rgba(213,166,60,.35);
+}
 
 .secondary{
-  border:1px solid #444;
-  color:white;
-  background:#11141b;
+  border:1px solid rgba(255,255,255,.2);
+  color:#fff;
+  background:rgba(255,255,255,.03);
+  backdrop-filter:blur(10px);
 }
 
+.secondary:hover{
+  transform:translateY(-3px);
+  border-color:#d5a63c;
+  color:#f0c65d;
+  box-shadow:0 0 25px rgba(213,166,60,.08);
+}
+  
 section{
   max-width:1200px;
   margin:auto;
