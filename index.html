@@ -1382,6 +1382,37 @@ async function uploadProfilePhoto(event){
 
   alert("Profile photo saved successfully.");
 
+} async function removeProfilePhoto(){
+
+  const { data:userData } =
+    await supabaseClient.auth.getUser();
+
+  const user = userData.user;
+
+  if(!user){
+    alert("Please login first.");
+    return;
+  }
+
+  const { error } =
+    await supabaseClient.auth.updateUser({
+      data:{
+        avatar_url:null
+      }
+    });
+
+  if(error){
+    alert(error.message);
+    return;
+  }
+
+  document.getElementById("profilePhoto").src = "";
+  document.getElementById("profilePhoto").style.display = "none";
+  document.getElementById("profileLetter").style.display = "block";
+
+  document.getElementById("profilePhotoInput").value = "";
+
+  alert("Profile photo removed successfully.");
 }
 
 </script>
@@ -1412,6 +1443,13 @@ async function uploadProfilePhoto(event){
   style="margin-bottom:15px;">
   CHANGE PROFILE PHOTO
 </button>
+
+  <button
+  class="btn secondary"
+  onclick="removeProfilePhoto()"
+  style="margin-bottom:15px;">
+  REMOVE PROFILE PHOTO
+  </button>
 
     <div class="profile-title">
       P A G A N i PROFILE
