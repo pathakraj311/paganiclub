@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>PAGANi Club</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    background:#202127;
+    color:white;
+    padding:18px;
+}
+
+.card{
+    max-width:680px;
+    margin:auto;
+    overflow:hidden;
+    border-radius:30px;
+    background:#303139;
+    box-shadow:0 25px 70px rgba(0,0,0,.5);
+}
+
+/* BLUE HERO */
+.hero{
+    height:440px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    position:relative;
+    overflow:hidden;
+
+    background:
+    radial-gradient(circle at 50% 55%,
+    #168cff 0%,
+    #0645b8 18%,
+    transparent 45%),
+
+    radial-gradient(circle at 20% 20%,
+    #063b91,
+    transparent 45%),
+
+    linear-gradient(145deg,
+    #01040c,
+    #001c55,
+    #01030b);
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    inset:-50px;
+    background:
+    radial-gradient(ellipse at 35% 30%,
+    rgba(0,110,255,.55),
+    transparent 40%),
+    radial-gradient(ellipse at 70% 65%,
+    rgba(0,60,180,.5),
+    transparent 45%);
+    filter:blur(25px);
+}
+
+.hero::after{
+    content:"";
+    position:absolute;
+    left:8%;
+    right:8%;
+    top:61%;
+    height:3px;
+    background:linear-gradient(
+        90deg,
+        transparent,
+        #008cff,
+        white,
+        #008cff,
+        transparent
+    );
+    box-shadow:
+    0 0 20px #008cff,
+    0 0 50px #006eff;
+}
+
+.logo{
+    position:relative;
+    z-index:2;
+    font-size:clamp(42px,10vw,78px);
+    font-weight:500;
+    letter-spacing:.25em;
+    margin-left:.25em;
+    text-shadow:
+    0 0 15px white,
+    0 0 35px #008cff;
+}
+
+/* CONTENT */
+.content{
+    text-align:center;
+    padding:60px 30px 55px;
+}
+
+h1{
+    font-size:clamp(40px,8vw,65px);
+    font-weight:500;
+    letter-spacing:-2px;
+}
+
+.description{
+    max-width:540px;
+    margin:25px auto 0;
+    color:#d0d0d5;
+    font-size:18px;
+    line-height:1.65;
+}
+
+.description strong{
+    color:white;
+}
+
+/* LINKS */
+.bottom{
+    text-align:center;
+    padding:40px 20px 45px;
+    background:
+    linear-gradient(
+        145deg,
+        #35363e,
+        #514b32
+    );
+}
+
+.links{
+    font-size:19px;
+}
+
+.links a{
+    color:white;
+    text-decoration:underline;
+    margin:0 10px;
+}
+
+.dot{
+    color:#e5b62d;
+}
+
+/* BUTTON */
+.button{
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:14px;
+
+    width:90%;
+    max-width:560px;
+
+    margin:40px auto 0;
+    padding:20px;
+
+    border-radius:50px;
+
+    background:linear-gradient(
+        100deg,
+        #ffe77c,
+        #ffc83d
+    );
+
+    color:#30302d;
+    text-decoration:none;
+    font-size:19px;
+    font-weight:bold;
+
+    box-shadow:
+    0 12px 30px rgba(255,195,50,.25);
+}
+
+.footer{
+    text-align:center;
+    color:#999aa1;
+    font-size:13px;
+    padding:22px;
+}
+
+/* MOBILE */
+@media(max-width:500px){
+
+    body{
+        padding:10px;
+    }
+
+    .hero{
+        height:380px;
+    }
+
+    .content{
+        padding:48px 22px;
+    }
+
+    .description{
+        font-size:16px;
+    }
+
+    .links a{
+        margin:0 5px;
+        font-size:16px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="card">
+
+    <div class="hero">
+        <div class="logo">P A G A N i</div>
+    </div>
+
+    <div class="content">
+
+        <h1>PAGANi Club</h1>
+
+        <p class="description">
+            <strong>Welcome to PAGANi Club.</strong>
+            A premium digital space built for the PAGANi community.
+            Connect, explore and stay close to everything PAGANi.
+        </p>
+
+    </div>
+
+    <div class="bottom">
+
+        <div class="links">
+
+            <a href="#">X</a>
+            <span class="dot">•</span>
+
+            <a href="#">Instagram</a>
+            <span class="dot">•</span>
+
+            <a href="#">LinkedIn</a>
+
+        </div>
+
+        <a class="button"
+           href="mailto:hello@pagani.club">
+            ✉
+            <span>Get in touch</span>
+        </a>
+
+    </div>
+
+    <div class="footer">
+        © 2026 PAGANi Club
+    </div>
+
+</div>
+
+</body>
+</html>
