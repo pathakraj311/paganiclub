@@ -1252,7 +1252,7 @@ window.onclick = function(event){
 
 /* =========================
    PROFILE
-========================= */
+=============================
 
 function showProfile(){
 
@@ -1277,8 +1277,29 @@ function showProfile(){
     const email =
       currentUser.email || "";
 
+    const photoUrl =
+    await supabaseClient.auth.updateUser({
+  data: {
+    avatar_url: photoUrl
+  }
+});
+      currentUser.user_metadata?.avatar_url || "";
+
     document.getElementById("profileName").innerText = name;
     document.getElementById("profileEmail").innerText = email;
+
+    if(photoUrl){
+
+      document.getElementById("profilePhoto").src = photoUrl;
+      document.getElementById("profilePhoto").style.display = "block";
+      document.getElementById("profileLetter").style.display = "none";
+
+    }else{
+
+      document.getElementById("profilePhoto").style.display = "none";
+      document.getElementById("profileLetter").style.display = "block";
+
+    }
 
     document.getElementById("profilePage").style.display = "flex";
 
