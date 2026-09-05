@@ -5,6 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>P A G A N i Club</title>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+
 <style>
 *{
   margin:0;
@@ -13,9 +15,7 @@
   font-family:Arial,Helvetica,sans-serif;
 }
 
-html{
-  scroll-behavior:smooth;
-}
+html{scroll-behavior:smooth}
 
 body{
   background:#07080d;
@@ -29,7 +29,7 @@ header{
   left:0;
   width:100%;
   z-index:1000;
-  background:rgba(7,8,13,.88);
+  background:rgba(7,8,13,.9);
   backdrop-filter:blur(15px);
   border-bottom:1px solid rgba(255,255,255,.08);
 }
@@ -49,9 +49,7 @@ header{
   letter-spacing:6px;
 }
 
-.logo span{
-  color:#d5a63c;
-}
+.logo span{color:#d5a63c}
 
 nav a{
   color:#ddd;
@@ -60,9 +58,7 @@ nav a{
   font-size:14px;
 }
 
-nav a:hover{
-  color:#d5a63c;
-}
+nav a:hover{color:#d5a63c}
 
 .hero{
   min-height:100vh;
@@ -74,12 +70,9 @@ nav a:hover{
   background:
     radial-gradient(circle at 50% 30%,rgba(36,91,170,.35),transparent 38%),
     linear-gradient(180deg,#0c1628,#07080d 70%);
-  position:relative;
 }
 
-.hero-content{
-  max-width:850px;
-}
+.hero-content{max-width:850px}
 
 .badge{
   display:inline-block;
@@ -98,9 +91,7 @@ nav a:hover{
   margin-bottom:15px;
 }
 
-.hero h1 span{
-  color:#d5a63c;
-}
+.hero h1 span{color:#d5a63c}
 
 .hero p{
   color:#aeb4c0;
@@ -132,9 +123,7 @@ nav a:hover{
   color:#080808;
 }
 
-.primary:hover{
-  background:#f0c65d;
-}
+.primary:hover{background:#f0c65d}
 
 .secondary{
   border:1px solid #444;
@@ -158,9 +147,7 @@ section{
   margin-bottom:10px;
 }
 
-.section-title p{
-  color:#9299a7;
-}
+.section-title p{color:#9299a7}
 
 .cards{
   display:grid;
@@ -186,9 +173,7 @@ section{
   margin-bottom:18px;
 }
 
-.card h3{
-  margin-bottom:10px;
-}
+.card h3{margin-bottom:10px}
 
 .card p{
   color:#969eac;
@@ -196,9 +181,7 @@ section{
   font-size:14px;
 }
 
-.tournament{
-  position:relative;
-}
+.tournament{position:relative}
 
 .status{
   position:absolute;
@@ -211,9 +194,7 @@ section{
   font-size:11px;
 }
 
-.tournament h3{
-  padding-right:70px;
-}
+.tournament h3{padding-right:70px}
 
 .info{
   margin:20px 0;
@@ -257,9 +238,7 @@ th{
   font-size:13px;
 }
 
-td{
-  color:#ddd;
-}
+td{color:#ddd}
 
 .rank{
   color:#d5a63c;
@@ -286,27 +265,17 @@ td{
   outline:none;
 }
 
-.input:focus{
-  border-color:#d5a63c;
-}
+.input:focus{border-color:#d5a63c}
 
 .login-box .btn{
   width:100%;
   margin-top:5px;
 }
 
-footer{
-  border-top:1px solid rgba(255,255,255,.08);
-  padding:35px 20px;
-  text-align:center;
-  color:#737b89;
-}
-
-.footer-logo{
-  color:white;
-  letter-spacing:5px;
-  font-weight:bold;
-  margin-bottom:10px;
+.message{
+  margin-top:15px;
+  line-height:1.5;
+  font-size:14px;
 }
 
 .modal{
@@ -329,9 +298,7 @@ footer{
   padding:25px;
 }
 
-.modal-box h2{
-  margin-bottom:10px;
-}
+.modal-box h2{margin-bottom:10px}
 
 .modal-box p{
   color:#9299a7;
@@ -346,22 +313,35 @@ footer{
   color:#aaa;
 }
 
+.account{
+  display:none;
+  color:#66e59a;
+  font-size:13px;
+  margin-top:10px;
+}
+
+footer{
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:35px 20px;
+  text-align:center;
+  color:#737b89;
+}
+
+.footer-logo{
+  color:white;
+  letter-spacing:5px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
 @media(max-width:800px){
-  nav{
-    display:none;
-  }
+  nav{display:none}
 
-  .cards{
-    grid-template-columns:1fr;
-  }
+  .cards{grid-template-columns:1fr}
 
-  .hero h1{
-    letter-spacing:6px;
-  }
+  .hero h1{letter-spacing:6px}
 
-  section{
-    padding:70px 18px;
-  }
+  section{padding:70px 18px}
 
   th,td{
     padding:12px 8px;
@@ -375,7 +355,10 @@ footer{
 
 <header>
   <div class="nav">
-    <div class="logo">P A G A N <span>i</span></div>
+
+    <div class="logo">
+      P A G A N <span>i</span>
+    </div>
 
     <nav>
       <a href="#home">Home</a>
@@ -383,11 +366,14 @@ footer{
       <a href="#leaderboard">Leaderboard</a>
       <a href="#login">Login</a>
     </nav>
+
   </div>
 </header>
 
 <!-- HOME -->
+
 <div class="hero" id="home">
+
   <div class="hero-content">
 
     <div class="badge">WELCOME TO PAGANI CLUB</div>
@@ -400,14 +386,21 @@ footer{
     </p>
 
     <div class="buttons">
-      <a href="#tournaments" class="btn primary">EXPLORE TOURNAMENTS</a>
-      <a href="#login" class="btn secondary">LOGIN</a>
+      <a href="#tournaments" class="btn primary">
+        EXPLORE TOURNAMENTS
+      </a>
+
+      <a href="#login" class="btn secondary">
+        LOGIN / SIGN UP
+      </a>
     </div>
 
   </div>
+
 </div>
 
 <!-- FEATURES -->
+
 <section>
 
   <div class="section-title">
@@ -439,15 +432,17 @@ footer{
       <div class="icon">🛡️</div>
       <h3>Secure Platform</h3>
       <p>
-        User accounts and administrator functions will be
-        protected when the backend is connected.
+        User accounts and administrator functions are
+        protected through Supabase authentication and RLS.
       </p>
     </div>
 
   </div>
+
 </section>
 
 <!-- TOURNAMENTS -->
+
 <section id="tournaments">
 
   <div class="section-title">
@@ -491,12 +486,12 @@ footer{
 
       </div>
 
-      <button class="btn primary" onclick="openJoin('P A G A N i Battle #01')">
+      <button class="btn primary"
+        onclick="openJoin('P A G A N i Battle #01')">
         JOIN NOW
       </button>
 
     </div>
-
 
     <div class="card tournament">
 
@@ -532,12 +527,12 @@ footer{
 
       </div>
 
-      <button class="btn primary" onclick="openJoin('P A G A N i Battle #02')">
+      <button class="btn primary"
+        onclick="openJoin('P A G A N i Battle #02')">
         JOIN NOW
       </button>
 
     </div>
-
 
     <div class="card tournament">
 
@@ -573,16 +568,19 @@ footer{
 
       </div>
 
-      <button class="btn primary" onclick="openJoin('P A G A N i Championship')">
+      <button class="btn primary"
+        onclick="openJoin('P A G A N i Championship')">
         JOIN NOW
       </button>
 
     </div>
 
   </div>
+
 </section>
 
 <!-- LEADERBOARD -->
+
 <section id="leaderboard">
 
   <div class="section-title">
@@ -641,15 +639,30 @@ footer{
 
 </section>
 
-<!-- LOGIN -->
+<!-- LOGIN / SIGNUP -->
+
 <section id="login">
 
   <div class="section-title">
-    <h2>Player Login</h2>
-    <p>Access your P A G A N i profile.</p>
+
+    <h2>Player Account</h2>
+
+    <p>
+      Create an account or login to P A G A N i Club.
+    </p>
+
   </div>
 
   <div class="login-box">
+
+    <label>Name</label>
+
+    <input
+      class="input"
+      type="text"
+      id="fullName"
+      placeholder="Enter your name"
+    >
 
     <label>Email</label>
 
@@ -666,14 +679,32 @@ footer{
       class="input"
       type="password"
       id="password"
-      placeholder="Enter your password"
+      placeholder="Minimum 6 characters"
     >
 
-    <button class="btn primary" onclick="loginUser()">
+    <button
+      class="btn primary"
+      onclick="signupUser()">
+      CREATE ACCOUNT
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="loginUser()"
+      style="margin-top:10px;">
       LOGIN
     </button>
 
-    <p id="loginMessage" style="margin-top:15px;"></p>
+    <button
+      class="btn secondary"
+      onclick="logoutUser()"
+      style="margin-top:10px;">
+      LOGOUT
+    </button>
+
+    <p id="loginMessage" class="message"></p>
+
+    <div id="accountInfo" class="account"></div>
 
   </div>
 
@@ -691,7 +722,6 @@ footer{
 
 </footer>
 
-
 <!-- JOIN MODAL -->
 
 <div class="modal" id="joinModal">
@@ -700,7 +730,9 @@ footer{
 
     <span class="close" onclick="closeJoin()">×</span>
 
-    <h2 id="tournamentName">Join Tournament</h2>
+    <h2 id="tournamentName">
+      Join Tournament
+    </h2>
 
     <p>
       Enter your player information to continue.
@@ -720,21 +752,247 @@ footer{
 
     <button
       class="btn primary"
-      onclick="submitJoin()"
-    >
+      onclick="submitJoin()">
       SUBMIT
     </button>
 
-    <p id="joinMessage" style="margin-top:15px;"></p>
+    <p id="joinMessage" class="message"></p>
 
   </div>
 
 </div>
 
-
 <script>
 
+/* =========================
+   SUPABASE CONNECTION
+========================= */
+
+const SUPABASE_URL =
+  "https://twecikbzofibjaxdonrn.supabase.co";
+
+const SUPABASE_PUBLISHABLE_KEY =
+  "sb_publishable_BN3t0Klj9M-5omy-kp6Tsw_8XhKIUbR";
+
+const supabaseClient =
+  window.supabase.createClient(
+    SUPABASE_URL,
+    SUPABASE_PUBLISHABLE_KEY
+  );
+
+
+/* =========================
+   LOGIN / SIGNUP
+========================= */
+
+async function signupUser(){
+
+  const name =
+    document.getElementById("fullName").value.trim();
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const message =
+    document.getElementById("loginMessage");
+
+  if(name === "" || email === "" || password === ""){
+
+    message.innerText =
+      "Please fill all fields.";
+
+    message.style.color = "#ff6b6b";
+
+    return;
+  }
+
+  if(password.length < 6){
+
+    message.innerText =
+      "Password must be at least 6 characters.";
+
+    message.style.color = "#ff6b6b";
+
+    return;
+  }
+
+  message.innerText =
+    "Creating account...";
+
+  message.style.color = "#d5a63c";
+
+  const { data, error } =
+    await supabaseClient.auth.signUp({
+
+      email: email,
+
+      password: password,
+
+      options:{
+        data:{
+          full_name:name
+        }
+      }
+
+    });
+
+  if(error){
+
+    message.innerText =
+      error.message;
+
+    message.style.color = "#ff6b6b";
+
+    return;
+  }
+
+  message.innerText =
+    "Account created successfully.";
+
+  message.style.color = "#66e59a";
+
+  document.getElementById("fullName").value = "";
+
+}
+
+
+/* =========================
+   LOGIN
+========================= */
+
+async function loginUser(){
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value;
+
+  const message =
+    document.getElementById("loginMessage");
+
+  if(email === "" || password === ""){
+
+    message.innerText =
+      "Please enter email and password.";
+
+    message.style.color = "#ff6b6b";
+
+    return;
+  }
+
+  message.innerText =
+    "Logging in...";
+
+  message.style.color = "#d5a63c";
+
+  const { data, error } =
+    await supabaseClient.auth.signInWithPassword({
+
+      email:email,
+
+      password:password
+
+    });
+
+  if(error){
+
+    message.innerText =
+      error.message;
+
+    message.style.color = "#ff6b6b";
+
+    return;
+  }
+
+  message.innerText =
+    "Login successful.";
+
+  message.style.color = "#66e59a";
+
+  updateAccount(data.user);
+
+}
+
+
+/* =========================
+   LOGOUT
+========================= */
+
+async function logoutUser(){
+
+  const { error } =
+    await supabaseClient.auth.signOut();
+
+  const message =
+    document.getElementById("loginMessage");
+
+  if(error){
+
+    message.innerText =
+      error.message;
+
+    message.style.color = "#ff6b6b";
+
+    return;
+  }
+
+  message.innerText =
+    "Logged out successfully.";
+
+  message.style.color = "#66e59a";
+
+  document.getElementById("accountInfo").style.display = "none";
+}
+
+
+/* =========================
+   ACCOUNT DISPLAY
+========================= */
+
+function updateAccount(user){
+
+  if(!user) return;
+
+  const account =
+    document.getElementById("accountInfo");
+
+  account.innerText =
+    "Logged in as: " + user.email;
+
+  account.style.display = "block";
+}
+
+
+/* =========================
+   CHECK EXISTING SESSION
+========================= */
+
+async function checkSession(){
+
+  const { data } =
+    await supabaseClient.auth.getSession();
+
+  if(data.session){
+
+    updateAccount(data.session.user);
+
+  }
+
+}
+
+checkSession();
+
+
+/* =========================
+   TOURNAMENT JOIN
+========================= */
+
 let selectedTournament = "";
+
 
 function openJoin(name){
 
@@ -743,17 +1001,21 @@ function openJoin(name){
   document.getElementById("tournamentName").innerText =
     "Join " + name;
 
-  document.getElementById("joinModal").style.display = "flex";
+  document.getElementById("joinModal").style.display =
+    "flex";
 
 }
+
 
 function closeJoin(){
 
-  document.getElementById("joinModal").style.display = "none";
+  document.getElementById("joinModal").style.display =
+    "none";
 
 }
 
-function submitJoin(){
+
+async function submitJoin(){
 
   const name =
     document.getElementById("playerName").value.trim();
@@ -772,47 +1034,105 @@ function submitJoin(){
     message.style.color = "#ff6b6b";
 
     return;
-
   }
 
-  message.innerText =
-    "Registration received for " + selectedTournament +
-    ". Backend connection is required to save this permanently.";
 
-  message.style.color = "#66e59a";
+  const { data:sessionData } =
+    await supabaseClient.auth.getSession();
 
-}
+  const user =
+    sessionData.session?.user;
 
 
-function loginUser(){
-
-  const email =
-    document.getElementById("email").value.trim();
-
-  const password =
-    document.getElementById("password").value.trim();
-
-  const message =
-    document.getElementById("loginMessage");
-
-  if(email === "" || password === ""){
+  if(!user){
 
     message.innerText =
-      "Please enter email and password.";
+      "Please login first.";
 
     message.style.color = "#ff6b6b";
 
     return;
-
   }
 
+
   message.innerText =
-    "Login UI is working. Real account authentication will be connected with the secure backend.";
+    "Submitting registration...";
+
+  message.style.color = "#d5a63c";
+
+
+  const { data:tournamentData, error:tournamentError } =
+    await supabaseClient
+      .from("tournaments")
+      .select("id")
+      .eq("title", selectedTournament)
+      .limit(1);
+
+
+  if(tournamentError){
+
+    message.innerText =
+      tournamentError.message;
+
+    message.style.color = "#ff6b6b";
+
+    return;
+  }
+
+
+  if(!tournamentData || tournamentData.length === 0){
+
+    message.innerText =
+      "Tournament is not available yet.";
+
+    message.style.color = "#ff6b6b";
+
+    return;
+  }
+
+
+  const tournamentId =
+    tournamentData[0].id;
+
+
+  const { error } =
+    await supabaseClient
+      .from("tournament_registrations")
+      .insert({
+
+        tournament_id:tournamentId,
+
+        user_id:user.id,
+
+        player_name:name,
+
+        game_id:gameId
+
+      });
+
+
+  if(error){
+
+    message.innerText =
+      error.message;
+
+    message.style.color = "#ff6b6b";
+
+    return;
+  }
+
+
+  message.innerText =
+    "Registration successful!";
 
   message.style.color = "#66e59a";
 
 }
 
+
+/* =========================
+   MODAL CLOSE
+========================= */
 
 window.onclick = function(event){
 
@@ -830,4 +1150,4 @@ window.onclick = function(event){
 </script>
 
 </body>
-</html> 
+</html>
