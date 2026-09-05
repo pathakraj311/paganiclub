@@ -852,10 +852,10 @@ footer{
     >
 
     <button
-      class="btn primary"
-      onclick="gateLogin()">
-      LOGIN
-    </button>
+  class="btn primary"
+  onclick="sendGateOtp()">
+  SEND OTP
+</button>
 
     <button
       class="btn secondary"
@@ -1341,30 +1341,101 @@ const supabaseClient =
     SUPABASE_URL,
     SUPABASE_PUBLISHABLE_KEY
   );
+
+  async function sendGateOtp(){
+
+  const email =
+    document.getElementById("gateEmail").value.trim();
+
+  const message =
+    document.getElementById("gateMessage");
+
+  if(!email){
+
+    message.innerText =
+      "Enter your email.";
+
+    return;
+  }
+
+  message.innerText =
+    "Sending OTP...";
+
+  const { error } =
+    await supabaseClient.auth.signInWithOtp({
+      email: email
+    });
+
+  if(error){
+
+    message.innerText =
+      error.message;
+
+    return;
+  }
+
+  document.getElementById("gateOtp").style.display =
+    "block";
+
+  message.innerText =
+    "OTP sent to your email.";
+
+}
   
 async function gateLogin(){
 
-  const email = document.getElementById("gateEmail").value.trim();
-  const password = document.getElementById("gatePassword").value;
-  const message = document.getElementById("gateMessage");
+  const email =
+    document.getElementById("gateEmail").value.trim();
 
-  if(!email || !password){
-    message.innerText = "Enter email and password.";
+  const otp =
+    document.getElementById("gateOtp").value.trim();
+
+  const message =
+    document.getElementById("gateMessage");
+
+  if(!email){
+
+    message.innerText =
+      "Enter your email.";
+
     return;
   }
 
-  message.innerText = "Logging in...";
+  if(!otp){
+
+    message.innerText =
+      "Enter OTP.";
+
+    return;
+  }
+
+  message.innerText =
+    "Verifying OTP...";
 
   const { data, error } =
-    await supabaseClient.auth.signInWithPassword({email,password});
+    await supabaseClient.auth.verifyOtp({
+
+      email: email,
+
+      token: otp,
+
+      type: "email"
+
+    });
 
   if(error){
-    message.innerText = error.message;
+
+    message.innerText =
+      error.message;
+
     return;
   }
 
-  document.getElementById("loginGate").style.display = "none";
+  document.getElementById("loginGate").style.display =
+    "none";
+
   updateAccount(data.user);
+
 }
 
 /* =========================
