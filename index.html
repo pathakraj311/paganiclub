@@ -1283,37 +1283,6 @@ function closeProfile(){
 
 }
 
-  const user =
-    supabaseClient.auth.getUser();
-
-  user.then(function(result){
-
-    const currentUser = result.data.user;
-
-    if(!currentUser){
-
-      alert("Please login first.");
-      return;
-
-    }
-
-    const name =
-      currentUser.user_metadata?.full_name || "P A G A N i Player";
-
-    const email =
-      currentUser.email || "";
-
-    alert(
-      "P A G A N i PROFILE\n\n" +
-      "Name: " + name + "\n" +
-      "Email: " + email
-    );
-
-  });
-
-}
-
-
 </script>
 <!-- PROFILE PAGE -->
 
