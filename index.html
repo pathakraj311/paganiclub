@@ -747,11 +747,126 @@ footer{
     font-size:13px;
   }
 }
+/* PAGANI LOGIN GATE */
+
+.login-gate{
+  position:fixed;
+  inset:0;
+  z-index:9999;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+  background:
+    radial-gradient(
+      circle at 50% 40%,
+      rgba(213,166,60,.14),
+      transparent 40%
+    ),
+    #05060a;
+}
+
+.gate-box{
+  width:100%;
+  max-width:430px;
+  padding:40px 30px;
+  text-align:center;
+  background:#10131a;
+  border:1px solid rgba(213,166,60,.35);
+  border-radius:22px;
+  box-shadow:
+    0 25px 70px rgba(0,0,0,.65),
+    0 0 40px rgba(213,166,60,.06);
+}
+
+.gate-logo{
+  font-size:32px;
+  font-weight:900;
+  letter-spacing:7px;
+  margin-bottom:10px;
+}
+
+.gate-logo span{
+  color:#d5a63c;
+}
+
+.gate-subtitle{
+  color:#9299a7;
+  font-size:11px;
+  letter-spacing:2px;
+  margin-bottom:35px;
+}
+
+.gate-box h2{
+  font-size:25px;
+  margin-bottom:20px;
+}
+
+.gate-box .input{
+  margin:8px 0;
+}
+
+.gate-box .primary{
+  width:100%;
+  margin-top:10px;
+}
+
+#gateMessage{
+  min-height:20px;
+}
+  
 </style>
 </head>
 
 <body>
+<!-- PAGANI LOGIN GATE -->
 
+<div id="loginGate" class="login-gate">
+
+  <div class="gate-box">
+
+    <div class="gate-logo">
+      P A G A N <span>i</span>
+    </div>
+
+    <p class="gate-subtitle">
+      WELCOME TO P A G A N i CLUB
+    </p>
+
+    <h2>Player Login</h2>
+
+    <input
+      class="input"
+      type="email"
+      id="gateEmail"
+      placeholder="Enter your email"
+    >
+
+    <input
+      class="input"
+      type="password"
+      id="gatePassword"
+      placeholder="Enter your password"
+    >
+
+    <button
+      class="btn primary"
+      onclick="gateLogin()">
+      LOGIN
+    </button>
+
+    <button
+      class="btn secondary"
+      onclick="gateSignup()"
+      style="width:100%; margin-top:10px;">
+      CREATE ACCOUNT
+    </button>
+
+    <p id="gateMessage" class="message"></p>
+
+  </div>
+
+</div>
 <header>
   <div class="nav">
 
