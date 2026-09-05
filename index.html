@@ -3,264 +3,831 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>PAGANi Club</title>
+<title>P A G A N i Club</title>
 
 <style>
 *{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  font-family:Arial,Helvetica,sans-serif;
+}
+
+html{
+  scroll-behavior:smooth;
 }
 
 body{
-    min-height:100vh;
-    font-family:Arial,Helvetica,sans-serif;
-    background:#202127;
-    color:white;
-    padding:18px;
+  background:#07080d;
+  color:white;
+  overflow-x:hidden;
 }
 
-.card{
-    max-width:680px;
-    margin:auto;
-    overflow:hidden;
-    border-radius:30px;
-    background:#303139;
-    box-shadow:0 25px 70px rgba(0,0,0,.5);
+header{
+  position:fixed;
+  top:0;
+  left:0;
+  width:100%;
+  z-index:1000;
+  background:rgba(7,8,13,.88);
+  backdrop-filter:blur(15px);
+  border-bottom:1px solid rgba(255,255,255,.08);
 }
 
-/* BLUE HERO */
-.hero{
-    height:440px;
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    position:relative;
-    overflow:hidden;
-
-    background:
-    radial-gradient(circle at 50% 55%,
-    #168cff 0%,
-    #0645b8 18%,
-    transparent 45%),
-
-    radial-gradient(circle at 20% 20%,
-    #063b91,
-    transparent 45%),
-
-    linear-gradient(145deg,
-    #01040c,
-    #001c55,
-    #01030b);
-}
-
-.hero::before{
-    content:"";
-    position:absolute;
-    inset:-50px;
-    background:
-    radial-gradient(ellipse at 35% 30%,
-    rgba(0,110,255,.55),
-    transparent 40%),
-    radial-gradient(ellipse at 70% 65%,
-    rgba(0,60,180,.5),
-    transparent 45%);
-    filter:blur(25px);
-}
-
-.hero::after{
-    content:"";
-    position:absolute;
-    left:8%;
-    right:8%;
-    top:61%;
-    height:3px;
-    background:linear-gradient(
-        90deg,
-        transparent,
-        #008cff,
-        white,
-        #008cff,
-        transparent
-    );
-    box-shadow:
-    0 0 20px #008cff,
-    0 0 50px #006eff;
+.nav{
+  max-width:1200px;
+  margin:auto;
+  padding:18px 22px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
 }
 
 .logo{
-    position:relative;
-    z-index:2;
-    font-size:clamp(42px,10vw,78px);
-    font-weight:500;
-    letter-spacing:.25em;
-    margin-left:.25em;
-    text-shadow:
-    0 0 15px white,
-    0 0 35px #008cff;
+  font-size:22px;
+  font-weight:800;
+  letter-spacing:6px;
 }
 
-/* CONTENT */
-.content{
-    text-align:center;
-    padding:60px 30px 55px;
+.logo span{
+  color:#d5a63c;
 }
 
-h1{
-    font-size:clamp(40px,8vw,65px);
-    font-weight:500;
-    letter-spacing:-2px;
+nav a{
+  color:#ddd;
+  text-decoration:none;
+  margin-left:25px;
+  font-size:14px;
 }
 
-.description{
-    max-width:540px;
-    margin:25px auto 0;
-    color:#d0d0d5;
-    font-size:18px;
-    line-height:1.65;
+nav a:hover{
+  color:#d5a63c;
 }
 
-.description strong{
-    color:white;
+.hero{
+  min-height:100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  padding:110px 20px 60px;
+  background:
+    radial-gradient(circle at 50% 30%,rgba(36,91,170,.35),transparent 38%),
+    linear-gradient(180deg,#0c1628,#07080d 70%);
+  position:relative;
 }
 
-/* LINKS */
-.bottom{
-    text-align:center;
-    padding:40px 20px 45px;
-    background:
-    linear-gradient(
-        145deg,
-        #35363e,
-        #514b32
-    );
+.hero-content{
+  max-width:850px;
 }
 
-.links{
-    font-size:19px;
+.badge{
+  display:inline-block;
+  padding:8px 15px;
+  border:1px solid rgba(213,166,60,.5);
+  border-radius:30px;
+  color:#d5a63c;
+  font-size:12px;
+  letter-spacing:3px;
+  margin-bottom:25px;
 }
 
-.links a{
-    color:white;
-    text-decoration:underline;
-    margin:0 10px;
+.hero h1{
+  font-size:clamp(48px,10vw,100px);
+  letter-spacing:12px;
+  margin-bottom:15px;
 }
 
-.dot{
-    color:#e5b62d;
+.hero h1 span{
+  color:#d5a63c;
 }
 
-/* BUTTON */
-.button{
-    display:flex;
-    align-items:center;
-    justify-content:center;
-    gap:14px;
-
-    width:90%;
-    max-width:560px;
-
-    margin:40px auto 0;
-    padding:20px;
-
-    border-radius:50px;
-
-    background:linear-gradient(
-        100deg,
-        #ffe77c,
-        #ffc83d
-    );
-
-    color:#30302d;
-    text-decoration:none;
-    font-size:19px;
-    font-weight:bold;
-
-    box-shadow:
-    0 12px 30px rgba(255,195,50,.25);
+.hero p{
+  color:#aeb4c0;
+  max-width:650px;
+  margin:0 auto 35px;
+  line-height:1.7;
+  font-size:16px;
 }
 
-.footer{
-    text-align:center;
-    color:#999aa1;
+.buttons{
+  display:flex;
+  justify-content:center;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.btn{
+  border:none;
+  padding:14px 25px;
+  border-radius:8px;
+  font-weight:bold;
+  cursor:pointer;
+  text-decoration:none;
+  display:inline-block;
+}
+
+.primary{
+  background:#d5a63c;
+  color:#080808;
+}
+
+.primary:hover{
+  background:#f0c65d;
+}
+
+.secondary{
+  border:1px solid #444;
+  color:white;
+  background:#11141b;
+}
+
+section{
+  max-width:1200px;
+  margin:auto;
+  padding:90px 22px;
+}
+
+.section-title{
+  text-align:center;
+  margin-bottom:45px;
+}
+
+.section-title h2{
+  font-size:36px;
+  margin-bottom:10px;
+}
+
+.section-title p{
+  color:#9299a7;
+}
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.card{
+  background:linear-gradient(145deg,#121620,#0c0e14);
+  border:1px solid rgba(255,255,255,.08);
+  border-radius:16px;
+  padding:25px;
+  transition:.3s;
+}
+
+.card:hover{
+  transform:translateY(-5px);
+  border-color:rgba(213,166,60,.5);
+}
+
+.card .icon{
+  font-size:32px;
+  margin-bottom:18px;
+}
+
+.card h3{
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#969eac;
+  line-height:1.6;
+  font-size:14px;
+}
+
+.tournament{
+  position:relative;
+}
+
+.status{
+  position:absolute;
+  right:20px;
+  top:20px;
+  background:#173d27;
+  color:#66e59a;
+  padding:6px 10px;
+  border-radius:20px;
+  font-size:11px;
+}
+
+.tournament h3{
+  padding-right:70px;
+}
+
+.info{
+  margin:20px 0;
+  display:grid;
+  grid-template-columns:1fr 1fr;
+  gap:10px;
+}
+
+.info div{
+  background:#080a0f;
+  padding:12px;
+  border-radius:8px;
+}
+
+.info small{
+  display:block;
+  color:#737b89;
+  margin-bottom:4px;
+}
+
+.leaderboard{
+  overflow:hidden;
+  border-radius:14px;
+  border:1px solid rgba(255,255,255,.08);
+}
+
+table{
+  width:100%;
+  border-collapse:collapse;
+  background:#10131a;
+}
+
+th,td{
+  padding:17px;
+  text-align:left;
+  border-bottom:1px solid rgba(255,255,255,.06);
+}
+
+th{
+  color:#d5a63c;
+  font-size:13px;
+}
+
+td{
+  color:#ddd;
+}
+
+.rank{
+  color:#d5a63c;
+  font-weight:bold;
+}
+
+.login-box{
+  max-width:500px;
+  margin:auto;
+  background:#10131a;
+  border:1px solid rgba(255,255,255,.08);
+  padding:30px;
+  border-radius:18px;
+}
+
+.input{
+  width:100%;
+  padding:14px;
+  margin:8px 0 15px;
+  background:#080a0f;
+  color:white;
+  border:1px solid #292e38;
+  border-radius:8px;
+  outline:none;
+}
+
+.input:focus{
+  border-color:#d5a63c;
+}
+
+.login-box .btn{
+  width:100%;
+  margin-top:5px;
+}
+
+footer{
+  border-top:1px solid rgba(255,255,255,.08);
+  padding:35px 20px;
+  text-align:center;
+  color:#737b89;
+}
+
+.footer-logo{
+  color:white;
+  letter-spacing:5px;
+  font-weight:bold;
+  margin-bottom:10px;
+}
+
+.modal{
+  display:none;
+  position:fixed;
+  inset:0;
+  z-index:2000;
+  background:rgba(0,0,0,.75);
+  align-items:center;
+  justify-content:center;
+  padding:20px;
+}
+
+.modal-box{
+  width:100%;
+  max-width:450px;
+  background:#11141b;
+  border:1px solid #333944;
+  border-radius:18px;
+  padding:25px;
+}
+
+.modal-box h2{
+  margin-bottom:10px;
+}
+
+.modal-box p{
+  color:#9299a7;
+  margin-bottom:20px;
+  line-height:1.5;
+}
+
+.close{
+  float:right;
+  font-size:25px;
+  cursor:pointer;
+  color:#aaa;
+}
+
+@media(max-width:800px){
+  nav{
+    display:none;
+  }
+
+  .cards{
+    grid-template-columns:1fr;
+  }
+
+  .hero h1{
+    letter-spacing:6px;
+  }
+
+  section{
+    padding:70px 18px;
+  }
+
+  th,td{
+    padding:12px 8px;
     font-size:13px;
-    padding:22px;
-}
-
-/* MOBILE */
-@media(max-width:500px){
-
-    body{
-        padding:10px;
-    }
-
-    .hero{
-        height:380px;
-    }
-
-    .content{
-        padding:48px 22px;
-    }
-
-    .description{
-        font-size:16px;
-    }
-
-    .links a{
-        margin:0 5px;
-        font-size:16px;
-    }
+  }
 }
 </style>
 </head>
 
 <body>
 
-<div class="card">
+<header>
+  <div class="nav">
+    <div class="logo">P A G A N <span>i</span></div>
 
-    <div class="hero">
-        <div class="logo">P A G A N i</div>
+    <nav>
+      <a href="#home">Home</a>
+      <a href="#tournaments">Tournaments</a>
+      <a href="#leaderboard">Leaderboard</a>
+      <a href="#login">Login</a>
+    </nav>
+  </div>
+</header>
+
+<!-- HOME -->
+<div class="hero" id="home">
+  <div class="hero-content">
+
+    <div class="badge">WELCOME TO PAGANI CLUB</div>
+
+    <h1>P A G A N <span>i</span></h1>
+
+    <p>
+      The next generation gaming tournament platform.
+      Join tournaments, compete with players and climb the leaderboard.
+    </p>
+
+    <div class="buttons">
+      <a href="#tournaments" class="btn primary">EXPLORE TOURNAMENTS</a>
+      <a href="#login" class="btn secondary">LOGIN</a>
     </div>
 
-    <div class="content">
+  </div>
+</div>
 
-        <h1>PAGANi Club</h1>
+<!-- FEATURES -->
+<section>
 
-        <p class="description">
-            <strong>Welcome to PAGANi Club.</strong>
-            A premium digital space built for the PAGANi community.
-            Connect, explore and stay close to everything PAGANi.
-        </p>
+  <div class="section-title">
+    <h2>Why P A G A N i?</h2>
+    <p>Everything you need to compete.</p>
+  </div>
 
+  <div class="cards">
+
+    <div class="card">
+      <div class="icon">🏆</div>
+      <h3>Competitive Tournaments</h3>
+      <p>
+        Participate in gaming tournaments and compete
+        against players from different locations.
+      </p>
     </div>
 
-    <div class="bottom">
+    <div class="card">
+      <div class="icon">⚡</div>
+      <h3>Fast Results</h3>
+      <p>
+        Tournament results and rankings can be displayed
+        directly on your profile.
+      </p>
+    </div>
 
-        <div class="links">
+    <div class="card">
+      <div class="icon">🛡️</div>
+      <h3>Secure Platform</h3>
+      <p>
+        User accounts and administrator functions will be
+        protected when the backend is connected.
+      </p>
+    </div>
 
-            <a href="#">X</a>
-            <span class="dot">•</span>
+  </div>
+</section>
 
-            <a href="#">Instagram</a>
-            <span class="dot">•</span>
+<!-- TOURNAMENTS -->
+<section id="tournaments">
 
-            <a href="#">LinkedIn</a>
+  <div class="section-title">
+    <h2>Live Tournaments</h2>
+    <p>Choose your battle and compete.</p>
+  </div>
 
+  <div class="cards">
+
+    <div class="card tournament">
+
+      <div class="status">LIVE</div>
+
+      <div class="icon">🎮</div>
+
+      <h3>P A G A N i Battle #01</h3>
+
+      <p>Competitive gaming tournament.</p>
+
+      <div class="info">
+
+        <div>
+          <small>ENTRY</small>
+          ₹59
         </div>
 
-        <a class="button"
-           href="mailto:hello@pagani.club">
-            ✉
-            <span>Get in touch</span>
-        </a>
+        <div>
+          <small>PRIZE</small>
+          ₹2,000
+        </div>
+
+        <div>
+          <small>PLAYERS</small>
+          100
+        </div>
+
+        <div>
+          <small>TYPE</small>
+          Solo
+        </div>
+
+      </div>
+
+      <button class="btn primary" onclick="openJoin('P A G A N i Battle #01')">
+        JOIN NOW
+      </button>
 
     </div>
 
-    <div class="footer">
-        © 2026 PAGANi Club
+
+    <div class="card tournament">
+
+      <div class="status">OPEN</div>
+
+      <div class="icon">🔥</div>
+
+      <h3>P A G A N i Battle #02</h3>
+
+      <p>High intensity gaming tournament.</p>
+
+      <div class="info">
+
+        <div>
+          <small>ENTRY</small>
+          ₹199
+        </div>
+
+        <div>
+          <small>PRIZE</small>
+          ₹7,000
+        </div>
+
+        <div>
+          <small>PLAYERS</small>
+          100
+        </div>
+
+        <div>
+          <small>TYPE</small>
+          Squad
+        </div>
+
+      </div>
+
+      <button class="btn primary" onclick="openJoin('P A G A N i Battle #02')">
+        JOIN NOW
+      </button>
+
     </div>
+
+
+    <div class="card tournament">
+
+      <div class="status">OPEN</div>
+
+      <div class="icon">👑</div>
+
+      <h3>P A G A N i Championship</h3>
+
+      <p>Premium championship tournament.</p>
+
+      <div class="info">
+
+        <div>
+          <small>ENTRY</small>
+          ₹499
+        </div>
+
+        <div>
+          <small>PRIZE</small>
+          ₹20,000
+        </div>
+
+        <div>
+          <small>PLAYERS</small>
+          100
+        </div>
+
+        <div>
+          <small>TYPE</small>
+          Squad
+        </div>
+
+      </div>
+
+      <button class="btn primary" onclick="openJoin('P A G A N i Championship')">
+        JOIN NOW
+      </button>
+
+    </div>
+
+  </div>
+</section>
+
+<!-- LEADERBOARD -->
+<section id="leaderboard">
+
+  <div class="section-title">
+    <h2>Leaderboard</h2>
+    <p>Top P A G A N i players.</p>
+  </div>
+
+  <div class="leaderboard">
+
+    <table>
+
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>PLAYER</th>
+          <th>WINS</th>
+          <th>POINTS</th>
+        </tr>
+      </thead>
+
+      <tbody>
+
+        <tr>
+          <td class="rank">01</td>
+          <td>PAGANi_01</td>
+          <td>18</td>
+          <td>920</td>
+        </tr>
+
+        <tr>
+          <td class="rank">02</td>
+          <td>ShadowX</td>
+          <td>15</td>
+          <td>840</td>
+        </tr>
+
+        <tr>
+          <td class="rank">03</td>
+          <td>RoyalHunter</td>
+          <td>13</td>
+          <td>790</td>
+        </tr>
+
+        <tr>
+          <td>04</td>
+          <td>DarkKnight</td>
+          <td>11</td>
+          <td>720</td>
+        </tr>
+
+      </tbody>
+
+    </table>
+
+  </div>
+
+</section>
+
+<!-- LOGIN -->
+<section id="login">
+
+  <div class="section-title">
+    <h2>Player Login</h2>
+    <p>Access your P A G A N i profile.</p>
+  </div>
+
+  <div class="login-box">
+
+    <label>Email</label>
+
+    <input
+      class="input"
+      type="email"
+      id="email"
+      placeholder="Enter your email"
+    >
+
+    <label>Password</label>
+
+    <input
+      class="input"
+      type="password"
+      id="password"
+      placeholder="Enter your password"
+    >
+
+    <button class="btn primary" onclick="loginUser()">
+      LOGIN
+    </button>
+
+    <p id="loginMessage" style="margin-top:15px;"></p>
+
+  </div>
+
+</section>
+
+<footer>
+
+  <div class="footer-logo">
+    P A G A N i
+  </div>
+
+  <p>
+    © 2026 P A G A N i Club. All rights reserved.
+  </p>
+
+</footer>
+
+
+<!-- JOIN MODAL -->
+
+<div class="modal" id="joinModal">
+
+  <div class="modal-box">
+
+    <span class="close" onclick="closeJoin()">×</span>
+
+    <h2 id="tournamentName">Join Tournament</h2>
+
+    <p>
+      Enter your player information to continue.
+    </p>
+
+    <input
+      class="input"
+      id="playerName"
+      placeholder="Player Name"
+    >
+
+    <input
+      class="input"
+      id="gameId"
+      placeholder="Game ID"
+    >
+
+    <button
+      class="btn primary"
+      onclick="submitJoin()"
+    >
+      SUBMIT
+    </button>
+
+    <p id="joinMessage" style="margin-top:15px;"></p>
+
+  </div>
 
 </div>
 
+
+<script>
+
+let selectedTournament = "";
+
+function openJoin(name){
+
+  selectedTournament = name;
+
+  document.getElementById("tournamentName").innerText =
+    "Join " + name;
+
+  document.getElementById("joinModal").style.display = "flex";
+
+}
+
+function closeJoin(){
+
+  document.getElementById("joinModal").style.display = "none";
+
+}
+
+function submitJoin(){
+
+  const name =
+    document.getElementById("playerName").value.trim();
+
+  const gameId =
+    document.getElementById("gameId").value.trim();
+
+  const message =
+    document.getElementById("joinMessage");
+
+  if(name === "" || gameId === ""){
+
+    message.innerText =
+      "Please enter Player Name and Game ID.";
+
+    message.style.color = "#ff6b6b";
+
+    return;
+
+  }
+
+  message.innerText =
+    "Registration received for " + selectedTournament +
+    ". Backend connection is required to save this permanently.";
+
+  message.style.color = "#66e59a";
+
+}
+
+
+function loginUser(){
+
+  const email =
+    document.getElementById("email").value.trim();
+
+  const password =
+    document.getElementById("password").value.trim();
+
+  const message =
+    document.getElementById("loginMessage");
+
+  if(email === "" || password === ""){
+
+    message.innerText =
+      "Please enter email and password.";
+
+    message.style.color = "#ff6b6b";
+
+    return;
+
+  }
+
+  message.innerText =
+    "Login UI is working. Real account authentication will be connected with the secure backend.";
+
+  message.style.color = "#66e59a";
+
+}
+
+
+window.onclick = function(event){
+
+  const modal =
+    document.getElementById("joinModal");
+
+  if(event.target === modal){
+
+    closeJoin();
+
+  }
+
+}
+
+</script>
+
 </body>
-</html>
+</html> 
