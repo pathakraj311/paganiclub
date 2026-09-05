@@ -1320,40 +1320,13 @@ function closeProfile(){
     return;
   }
 
-  const { data: userData } =
-    await supabaseClient.auth.getUser();
-
-  const user = userData.user;
-
-  if(!user){
-    alert("Please login first.");
-    return;
-  }
-
-  if(!file.type.startsWith("image/")){
-    alert("Please select an image.");
-    return;
-  }
-
-  const filePath =
-    user.id + "/" + Date.now() + "-" + file.name;
-
-  const { error:uploadError } =
-    await supabaseClient.storage
-      .from("profile-photos")
-      .upload(filePath, file);
-
-  if(uploadError){
-    alert(uploadError.message);
-    return;
-  }
-
-  const { data:urlData } =
-    supabaseClient.storage
-      .from("profile-photos")
-      .getPublicUrl(filePath);
 
   const photoUrl = urlData.publicUrl;
+  await supabaseClient.auth.updateUser({
+  data: {
+    avatar_url: photoUrl
+  }
+});
 
   document.getElementById("profilePhoto").src = photoUrl;
   document.getElementById("profilePhoto").style.display = "block";
