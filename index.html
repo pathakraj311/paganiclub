@@ -1249,70 +1249,63 @@ window.onclick = function(event){
 
 }
 
-
-/* =========================
+  /* =========================
    PROFILE
-=============================
+========================= */
 
-function showProfile(){
+async function showProfile(){
 
-  const userPromise =
-    supabaseClient.auth.getUser();
+  const { data:userData } =
+    await supabaseClient.auth.getUser();
 
-  userPromise.then(function(result){
+  const currentUser = userData.user;
 
-    const currentUser = result.data.user;
+  if(!currentUser){
 
-    if(!currentUser){
+    alert("Please login first.");
+    return;
 
-      alert("Please login first.");
-      return;
-
-    }
-
-    const name =
-      currentUser.user_metadata?.full_name ||
-      "P A G A N i Player";
-
-    const email =
-      currentUser.email || "";
-
-    const photoUrl =
-    await supabaseClient.auth.updateUser({
-  data: {
-    avatar_url: photoUrl
   }
-});
-      currentUser.user_metadata?.avatar_url || "";
 
-    document.getElementById("profileName").innerText = name;
-    document.getElementById("profileEmail").innerText = email;
+  const name =
+    currentUser.user_metadata?.full_name ||
+    "P A G A N i Player";
 
-    if(photoUrl){
+  const email =
+    currentUser.email || "";
 
-      document.getElementById("profilePhoto").src = photoUrl;
-      document.getElementById("profilePhoto").style.display = "block";
-      document.getElementById("profileLetter").style.display = "none";
+  const photoUrl =
+    currentUser.user_metadata?.avatar_url || "";
 
-    }else{
+  document.getElementById("profileName").innerText = name;
+  document.getElementById("profileEmail").innerText = email;
 
-      document.getElementById("profilePhoto").style.display = "none";
-      document.getElementById("profileLetter").style.display = "block";
+  if(photoUrl){
 
-    }
+    document.getElementById("profilePhoto").src = photoUrl;
+    document.getElementById("profilePhoto").style.display = "block";
+    document.getElementById("profileLetter").style.display = "none";
 
-    document.getElementById("profilePage").style.display = "flex";
+  }else{
 
-  });
+    document.getElementById("profilePhoto").style.display = "none";
+    document.getElementById("profileLetter").style.display = "block";
+
+  }
+
+  document.getElementById("profilePage").style.display = "flex";
 
 }
+
 
 function closeProfile(){
 
   document.getElementById("profilePage").style.display = "none";
 
 }
-  async function uploadProfilePhoto(event){
+
+
+async function uploadProfilePhoto(event){
 
   const file = event.target.files[0];
 
@@ -1320,17 +1313,75 @@ function closeProfile(){
     return;
   }
 
+  const { data:userData } =
+    await supabaseClient.auth.getUser();
 
-  const photoUrl = urlData.publicUrl;
-  await supabaseClient.auth.updateUser({
-  data: {
-    avatar_url: photoUrl
+  const user = userData.user;
+
+  if(!user){
+
+    alert("Please login first.");
+    return;
+
   }
-});
 
-  document.getElementById("profilePhoto").src = photoUrl;
-  document.getElementById("profilePhoto").style.display = "block";
-  document.getElementById("profileLetter").style.display = "none";
+  if(!file.type.startsWith("image/")){
+
+    alert("Please select an image.");
+    return;
+
+  }
+
+  const filePath =
+    user.id + "/" + Date.now() + "-" + file.name;
+
+  const { error:uploadError } =
+    await supabaseClient.storage
+      .from("profile-photos")
+      .upload(filePath, file);
+
+  if(uploadError){
+
+    alert(uploadError.message);
+    return;
+
+  }
+
+  const { data:urlData } =
+    supabaseClient.storage
+      .from("profile-photos")
+      .getPublicUrl(filePath);
+
+  const photoUrl =
+    urlData.publicUrl;
+
+  const { error:updateError } =
+    await supabaseClient.auth.updateUser({
+
+      data:{
+        avatar_url:photoUrl
+      }
+
+  });
+
+  if(updateError){
+
+    alert(updateError.message);
+    return;
+
+  }
+
+  document.getElementById("profilePhoto").src =
+    photoUrl;
+
+  document.getElementById("profilePhoto").style.display =
+    "block";
+
+  document.getElementById("profileLetter").style.display =
+    "none";
+
+  alert("Profile photo saved successfully.");
+
 }
 
 </script>
