@@ -72,16 +72,61 @@ nav a:hover{color:#d5a63c}
 
   background:
     radial-gradient(
-      circle at 50% 20%,
-      rgba(213,166,60,.16),
-      transparent 35%
+      circle at 50% 40%,
+      rgba(213,166,60,.20) 0%,
+      rgba(213,166,60,.08) 20%,
+      transparent 48%
+    ),
+    radial-gradient(
+      ellipse at 12% 70%,
+      rgba(120,85,20,.12),
+      transparent 42%
+    ),
+    radial-gradient(
+      ellipse at 88% 25%,
+      rgba(120,85,20,.10),
+      transparent 40%
     ),
     linear-gradient(
-      180deg,
-      #11100d 0%,
-      #090a0e 55%,
-      #07080d 100%
+      135deg,
+      #030405 0%,
+      #090a0e 35%,
+      #15120c 52%,
+      #08090d 72%,
+      #020304 100%
     );
+}
+
+.hero::before{
+  content:"";
+  position:absolute;
+  inset:-20%;
+  background:
+    repeating-linear-gradient(
+      115deg,
+      transparent 0px,
+      transparent 90px,
+      rgba(213,166,60,.025) 91px,
+      transparent 92px
+    );
+  transform:rotate(-4deg);
+  pointer-events:none;
+}
+
+.hero::after{
+  content:"";
+  position:absolute;
+  width:650px;
+  height:650px;
+  left:50%;
+  top:45%;
+  transform:translate(-50%,-50%);
+  border:1px solid rgba(213,166,60,.08);
+  border-radius:50%;
+  box-shadow:
+    0 0 100px rgba(213,166,60,.05),
+    inset 0 0 100px rgba(213,166,60,.03);
+  pointer-events:none;
 }
 
 .hero::before{
